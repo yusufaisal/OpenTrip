@@ -1,0 +1,16 @@
+.Item {
+    padding-left: 0 !important; 
+}
+
+.divider {
+    height: 2px;
+    background: black;
+}
+
+.MuiTypography-subheading-85 {
+    font-family: 'Rubik-Light' !important;
+}
+
+.Item h3 {
+    font-family: 'Rubik-Light' !important;
+}

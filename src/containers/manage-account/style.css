@@ -1,0 +1,11 @@
+.MuiInputAdornment-positionStart-133 .MuiIconButton-root-56 {
+    height: 40px !important;   
+}
+
+.MuiInputAdornment-positionEnd-134 .MuiIconButton-root-56 {
+    height: 40px !important;   
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+}

@@ -1,0 +1,48 @@
+a {
+    color: white;
+}
+
+a:hover {
+    color: white;
+}
+
+.copyright {
+    float: right;
+}
+
+.content-footer {
+    /* float: right; */
+}
+
+.footer-padding {
+    padding-left: 25%;
+    padding-right: 30%;
+}
+
+.MuiTypography-body1-87 {
+    float: left;
+    color: white !important;
+}
+
+.jss87 {
+    color: white !important;
+}
+
+
+
+@media (max-width: 768px ) {
+    .footer-container{
+        float: none;
+        text-align: center;
+    }
+    .footer-padding {
+        padding-left: 0rem;
+        padding-right:0rem;
+    }
+
+    .copyright {
+        float: none;
+        text-align: center;
+    }
+}
+

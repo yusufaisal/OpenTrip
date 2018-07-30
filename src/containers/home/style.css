@@ -1,0 +1,61 @@
+
+.container-home {
+    height: auto;
+    width: 100%;
+}
+
+.footer {
+    padding: 4%;
+    background: #22364a;
+    overflow-x: hidden;
+    position: relative;
+}
+.footer-2 {
+    background: #FFEB3B;
+    overflow-x: hidden;
+    position: relative;
+    padding-bottom: 0% !important;
+}
+
+.content {
+  padding-right: 30px;  
+  padding-left: 30px;  
+  margin-top: 1.5rem;
+}
+
+.list-item {
+    padding-top: 8px;
+}
+
+.main {
+   margin-top: -1rem;
+}
+
+.carousel-inner{
+    -webkit-transform: translateZ(0px);
+}
+
+
+/* @media (min-height: 300px ) {
+    .main {
+        top: 1rem; 
+    }
+} */
+
+
+
+
+
+
+/* .content-sidebar {
+    display: grid;
+    position: static;
+    grid-template-columns: 100%;
+} */
+
+/* .content {
+    padding: 2%;
+    position: static;
+    overflow: auto;
+    background: #EEEEEE;
+} */

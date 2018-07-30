@@ -1,0 +1,51 @@
+.container-home {
+    height: auto;
+    width: 100%;
+}
+
+.footer {
+    padding: 4%;
+    background: #23384d;
+    overflow-x: hidden;
+    position: relative;
+}
+.footer-2 {
+    background: #FFEB3B;
+    overflow-x: hidden;
+    position: relative;
+    padding-bottom: 0% !important;
+}
+
+
+.list-item {
+    padding-top: 8px;
+}
+
+.main {
+   margin-top: -1rem;
+}
+
+
+.title-panel {
+    color: black !important;
+    font-family: 'Rubik-Medium' !important;
+    font-size: 1.3rem !important;
+}
+
+.container_create_trip {
+    width: 100%;
+}
+
+
+.content-panel {
+    padding: 24px 0px 24px 0px !important;
+}
+
+.MuiFormLabel-root-185 {
+    font-size: 1.3rem !important;
+    font-family: "Rubik-Reguler" !important;
+    line-height: 0.5 !important;
+    color: grey !important;
+}
+
+

@@ -1,0 +1,35 @@
+.parent{
+    height: 5rem;
+}
+
+.toolbar{
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.MuiDrawer-paper-8{
+    background-color: #ffeb3b !important;
+}
+
+.jss8{
+    background-color: #ffeb3b !important;
+}
+
+.MuiButton-label-141 {
+    font-family: 'Rubik-Reguler';
+    font-size: 14px;
+}
+.jss141 {
+    font-family: 'Rubik-Reguler';
+    font-size: 14px;
+}
+
+input {
+    font-family: 'Rubik-Reguler' !important;
+    font-size: 14px !important;
+}
+
+/* .icon{
+    width: 50%;
+    height: 50%;
+} */

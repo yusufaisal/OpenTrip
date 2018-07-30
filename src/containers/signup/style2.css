@@ -1,0 +1,93 @@
+.login-page {
+    width: 600px;
+    height: 400px;
+    padding: 3% 0 0;
+    margin: auto;
+}
+
+.banner-signup{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 25px;
+    min-width: 220px;
+    background: #FFEB3B;
+    align-items: center;
+}
+.logo-signup{
+    max-width: 100px;
+    max-height: 80px;
+    flex: 1;
+}
+.main-signup{
+    min-height: 400px;
+    display: flex;
+    position: relative;
+    min-width: 600px;
+    margin: 0 auto 100px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    border-radius: 10px;
+}
+
+.form-signup {
+    padding: 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.title-signup{
+    font-family: 'Rubik-Bold' !important;
+    font-size: 42px;
+}
+
+.input-signup {
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+.form-signup button {
+    outline: none;
+    text-transform: capitalize;
+    font-size: 14px;
+    border-radius: 5;
+    width :30%;
+    margin-top:1rem;
+    /*text-transform: uppercase;*/
+    /*outline: 0;*/
+    /*background: #4CAF50;*/
+    /*width: 100%;*/
+    /*border: 0;*/
+    /*padding: 15px;*/
+    /*color: #FFFFFF;*/
+    /*font-size: 14px;*/
+    /*-webkit-transition: all 0.3 ease;*/
+    /*transition: all 0.3 ease;*/
+    /*cursor: pointer;*/
+}
+.form-signup button:hover,.form button:active,.form button:focus {
+    background: #43A047;
+}
+
+.message {
+    margin: 20px 0 0 0;
+    color: #b3b3b3;
+    font-size: 12px;
+}
+
+.form-signup .message a {
+    color: #4CAF50;
+}
+
+.form-signup .register-form {
+    display: none;
+}
+
+body {
+    background: url('/images/BG.svg');
+}
