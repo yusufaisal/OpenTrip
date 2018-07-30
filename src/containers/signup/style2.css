@@ -13,6 +13,7 @@
     min-width: 220px;
     background: #FFEB3B;
     align-items: center;
+    border-radius: 10px;
 }
 .logo-signup{
     max-width: 120px;
