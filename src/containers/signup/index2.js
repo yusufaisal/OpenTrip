@@ -1,13 +1,18 @@
 import React from 'react';
-import Form from '../../components/signup';
-import './style.css';
+import './style2.css';
 
-import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import Stepper from 'material-ui/Stepper';
-import Step,{StepLabel}from 'material-ui/Stepper'
+import People from 'material-ui-icons/AccountCircle';
+import Email from 'material-ui-icons/Email';
+import VisibilityOff from 'material-ui-icons/VisibilityOff';
+import Visibility from 'material-ui-icons/Visibility';
+import Lock from 'material-ui-icons/Lock';
+
 import Button from 'material-ui/Button';
-
+import IconButton from 'material-ui/IconButton';
+import {withStyles} from 'material-ui/styles'
+import Input from 'material-ui/Input';
+import InputLabel from 'material-ui/Input/InputLabel';
+import FormControl from 'material-ui/Form/FormControl';
 import TextField from 'material-ui/TextField';
 import Typography from 'material-ui/Typography';
 import {InputAdornment} from 'material-ui/Input/';
@@ -17,129 +22,189 @@ import {Link} from 'react-router-dom'
 const logo = "/images/logo.png";
 const styles = theme => ({
     root: {
-        width: '90%',
+        display: 'flex',
+        flexWrap: 'wrap',
     },
-    button: {
-        marginRight: theme.spacing.unit,
+    margin: {
+        margin: theme.spacing.unit,
     },
-    instructions: {
-        marginTop: theme.spacing.unit,
-        marginBottom: theme.spacing.unit,
+    withoutLabel: {
+        marginTop: theme.spacing.unit * 3,
     },
-
-    greenLabel: {
-        color: '#0f0',
-    },
-    greenUnderline: {
-        '&:hover:not($disabled):before': {
-            backgroundColor: '#040',
-        },
-    },
-    greenInkbar: {
-        '&:after': {
-            backgroundColor: '#009688',
-        },
-    },
-    redInkbar: {
-        '&:after': {
-            backgroundColor: '#F44336',
-        },
-    },
-    disabled: {},
+    textField: {
+        fontSize: 100, //works!
+    }
 });
+
+const codes =[
+    {
+        value: 'ID',
+        label: '+62',
+    },
+    {
+        value: 'MY',
+        label: '+11',
+    },
+];
 
 function getSteps() {
     return ['Select campaign settings', 'Create an ad group', 'Create an ad'];
 }
 
-function getStepContent(step) {
+function getStepContent(step,state) {
     switch (step) {
         case 0:
             return (
                 <div>
-                    <Typography className='title-panel'>Daftar</Typography>
-                    <TextField
-                        id="name"
-                        placeholder="Nama Lengkap"
-                        // className={classes.textField}
-                        margin="normal"
-                        InputProps={{
-                            startAdornment: (
-                                <InputAdornment position="start">
-                                    {/*<AccountCircle />*/}
-                                </InputAdornment>
-                            ),
-                        }}
-                        style={{
-                            width:'10v0&'
-                        }}
-                    />
-                    <TextField
-                        id="email"
-                        placeholder="Email"
-                        // className={classes.textField}
-                        margin="normal"
-                        InputProps={{
-                            startAdornment: (
-                                <InputAdornment position="start">
-                                    {/*<AccountCircle />*/}
-                                </InputAdornment>
-                            ),
-                        }}
-                    />
-                    <TextField
-                        id="password"
-                        placeholder="Password"
-                        // className={classes.textField}
-                        margin="normal"
-                        InputProps={{
-                            startAdornment: (
-                                <InputAdornment position="start">
-                                    {/*<AccountCircle />*/}
-                                </InputAdornment>
-                            ),
-                        }}
-                    />
+                    {/*title*/}
+                    <Typography style={{fontSize:'22px',fontFamily:'Rubik-Bold'}}>Daftar</Typography>
+                    <form className="login-form-signup">
+                        {/*Content*/}
+
+                        <TextField
+                            id="name"
+                            placeholder="Nama Lengkap"
+                            style={{ textIndent: 30}}
+                            // className={classes.textField}
+                            margin="normal"
+                            InputProps={{
+                                startAdornment: (
+                                    <InputAdornment
+                                        position="start">
+                                        <People />
+                                    </InputAdornment>
+                                ),
+                            }}
+                            style={{
+                                width:'100%'
+                            }}
+                        />
+                        <TextField
+                            id="email"
+                            placeholder="Email"
+                            // className={classes.textField}
+                            margin="normal"
+                            InputProps={{
+                                startAdornment: (
+                                    <InputAdornment
+                                        position="start">
+                                        <Email/>
+                                    </InputAdornment>
+                                ),
+                            }}
+                            style={{
+
+                                width:'100%'
+                            }}
+                        />
+                        <TextField
+                            id="password"
+                            placeholder="Password"
+                            type='password'
+                            margin="normal"
+                            // onChange={this.handleChange('password')}
+
+                            InputProps={{
+                                startAdornment: (
+                                    <InputAdornment position="start" >
+                                        <Lock />
+                                    </InputAdornment>
+                                )
+                            }}
+                            style={{width: "100%" }}
+                        />
+
+                    </form>
                 </div>
             );
         case 1:
             return (
-                <form className="register-form-signup">
-                    <input type="text" placeholder="name"/>
-                    <input type="password" placeholder="password"/>
-                    <input type="text" placeholder="email address"/>
-                    <button>create</button>
-                    <p className="message">Already registered? <a href="#">Sign In</a></p>
-                </form>
+                <div>
+                    {/*title*/}
+                    <Typography style={{fontSize:'22px',fontFamily:'Rubik-Bold',textTransform:'capitalize'}}>selamat datang, {state.username}</Typography>
+                    {/*content*/}
+                    <Typography style={{marginTop:12,marginBottom:12,fontSize:'15px',fontFamily:'Rubik-Reguler'}}>Silahkan masukkan nomor HP-mu di bawah sini, ya!</Typography>
+                    <Typography style={{fontFamily:'Rubik-Reguler'}}>Jangan khawatir!! Kami tidak akan menyebarluaskan nomormu.{state.username}</Typography>
+                    <div style={{display:'flex'}}>
+                        <TextField
+                            id="select-currency-native"
+                            select
+                            value={state.currency}
+                            // onChange={this.handleChange('phone_code')}
+                            SelectProps={{
+                                native: true,
+                            }}
+                            margin="normal"
+                            style={{Width:'20px'}}
+                        >
+                            {codes.map(option => (
+                                <option key={option.value} value={option.value}>
+                                    {option.label}
+                                </option>
+                            ))}
+                        </TextField>
+                        <TextField
+                            id="phonenumber"
+                            type="number"
+                            placeholder="contoh: 81123456789"
+                            style={{ textIndent: 30}}
+                            // className={classes.textField}
+                            margin="normal"
+                            style={{
+                                width:'80%'
+                            }}
+                        />
+                    </div>
+
+                </div>
             );
         case 2:
-            return 'This is the bit I really care about!';
+            return (
+                <div>
+                    {/*title*/}
+                    <Typography style={{fontSize:'22px',fontFamily:'Rubik-Bold'}}>Kode verifikasi telah kami kirimkan</Typography>
+                    {/*content*/}
+                    <Typography style={{marginTop:12,marginBottom:12,fontSize:'15px',fontFamily:'Rubik-Reguler'}}>Masukkan 4 digit kode yang kami kirimkanke HP-mu melalui SMS di kolom di bawah ini!</Typography>
+                    <div style={{display:'flex'}}>
+                        <TextField
+                            id="phonenumber"
+                            type="number"
+                            inputStyle={{fontSize: '100'}}
+                            placeholder="1234"
+                            InputProps={{
+                                classes: {
+                                    input: {fontSize:'2.0rem'},
+                                },
+                            }}
+                            // className={classes.textField}
+                            margin="normal"
+                            style={{
+                                width:'60%'
+                            }}
+                        />
+                    </div>
+
+                </div>
+            );
         default:
-            return 'Unknown step';
+            return 'Finish';
     }
 }
 
+
+
 class SignUp extends React.Component{
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            OpenLoginBoxState: false,
-            amount: '',
-            password: '',
-            weight: '',
-            showPassword: false,
-            email: '',
-            activeStep: 0,
-            skipped: new Set(),
-        }
-    }
-
-    isStepOptional = step => {
-        return step === 1;
+    state = {
+        activeStep: 0,
+        skipped: new Set(),
+        phone_code: 'ID',
+        username: '',
+        email: '',
+        password: '',
     };
 
-    handleNext = () => {
+    handleNext = (e) => {
+        console.log(e);
         const { activeStep } = this.state;
         let { skipped } = this.state;
         if (this.isStepSkipped(activeStep)) {
@@ -151,60 +216,43 @@ class SignUp extends React.Component{
             skipped,
         });
     };
-
     handleBack = () => {
         const { activeStep } = this.state;
         this.setState({
             activeStep: activeStep - 1,
         });
     };
-
-    handleSkip = () => {
-        const { activeStep } = this.state;
-        if (!this.isStepOptional(activeStep)) {
-            // You probably want to guard against something like this,
-            // it should never occur unless someone's actively trying to break something.
-            throw new Error("You can't skip a step that isn't optional.");
-        }
-
-        this.setState(state => {
-            const skipped = new Set(state.skipped.values());
-            skipped.add(activeStep);
-            return {
-                activeStep: state.activeStep + 1,
-                skipped,
-            };
-        });
-    };
-
     handleReset = () => {
         this.setState({
             activeStep: 0,
         });
     };
-
     isStepSkipped(step) {
         return this.state.skipped.  has(step);
     }
+    handleChange = prop => event => {
+        this.setState({ [prop]: event.target.value });
+    };
 
     render(){
-
         const { classes } = this.props;
         const steps = getSteps();
         const { activeStep } = this.state;
 
         return(
-            <div style={{alignContent:'center'}}>
-                <div className="container-home3" >
-                    <div className="card">
-                        <img className="logo" src={logo}/>
-                        <div style={{alignContent:'flex-end'}}>
-                            <Typography style={{fontSize:'20px'}}>Liburan</Typography>
-                            <Typography className='word2'>dan bertemu</Typography>
-                            <Typography className='word3'>teman baru!</Typography>
+            <div className="login-page" style={{display:'flex'}}>
+                <div className="main-signup">
+                    <div className="banner-signup" >
+                        <div style={{flex:'1'}}>
+                            <img className="logo-signup" src={logo}/>
+                        </div>
+                        <div style={{flex:'1',paddingBottom:'20px',position:'absolute',bottom:'0'}}>
+                            <Typography style={{fontSize:'28px',fontFamily:'Rubik-Bold'}}>Liburan</Typography>
+                            <Typography style={{fontSize:'15px',fontFamily:'Rubik-Bold'}}>dan bertemu</Typography>
+                            <Typography style={{fontSize:'19px',fontFamily:'Rubik-Bold'}}>teman baru!</Typography>
                         </div>
                     </div>
-                    <div className="form">
+                    <div className="form-signup">
                         <div>
                             {activeStep === steps.length ? (
                                 <div>
@@ -217,8 +265,8 @@ class SignUp extends React.Component{
                                 </div>
                             ) : (
                                 <div>
-                                    <Typography>{getStepContent(activeStep)}</Typography>
-                                    <div>
+                                    <Typography>{getStepContent(activeStep,this.state)}</Typography>
+                                    <div style={{display:'flex',justifyContent:'flex-and'}}>
                                         {activeStep !== 0 &&(<Button
                                             raised
                                             color="secondary"
@@ -228,8 +276,8 @@ class SignUp extends React.Component{
                                                 textTransform: "capitalize",
                                                 fontSize: 14,
                                                 borderRadius: 5,
-                                                width:"100%",
-                                                marginTop:"1rem"
+                                                width:"45%",
+                                                margin:"1rem"
                                             }}
                                             onClick={this.handleBack}
                                         >
@@ -245,18 +293,19 @@ class SignUp extends React.Component{
                                                 textTransform: "capitalize",
                                                 fontSize: 14,
                                                 borderRadius: 5,
-                                                width:"30%",
-                                                marginTop:"1rem"
+                                                width:"40%",
+                                                margin:"1rem"
                                             }}
                                             onClick={this.handleNext}
                                         >
-                                            {activeStep === steps.length - 1 ? 'Finish' : 'Daftar'}
+                                            {activeStep === steps.length - 1 ? 'Finish' : activeStep === 0 ? 'Daftar' :'Lanjutkan'}
                                         </Button>
-                                        {activeStep == 0 && (<Link to=''><Typography>Sudah memiliki akun</Typography>   </Link>)}
+                                        {activeStep == 0 && (<Link to='login'><p className="message"><a href="#">Sudah memiliki akun</a></p> </Link>)}
                                     </div>
                                 </div>
                             )}
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -264,4 +313,4 @@ class SignUp extends React.Component{
     }
 }
 
-export default SignUp;
+export default withStyles(styles)(SignUp);

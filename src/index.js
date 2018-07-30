@@ -15,7 +15,7 @@ import yellow from 'material-ui/colors/yellow';
 import cyan from 'material-ui/colors/cyan';
 
 import Home from './containers/home';
-import Login from './containers/login';
+import Login from './containers/login_form';
 import CreateTrip from './containers/create_trip';
 import Signup from './containers/signup';
 import Trip from './containers/view_trip';

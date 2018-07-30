@@ -247,9 +247,9 @@ class SignUp extends React.Component{
                             <img className="logo-signup" src={logo}/>
                         </div>
                         <div style={{flex:'1',paddingBottom:'20px',position:'absolute',bottom:'0'}}>
-                            <Typography style={{fontSize:'28px',fontFamily:'Rubik-Bold'}}>Liburan</Typography>
-                            <Typography style={{fontSize:'15px',fontFamily:'Rubik-Bold'}}>dan bertemu</Typography>
-                            <Typography style={{fontSize:'19px',fontFamily:'Rubik-Bold'}}>teman baru!</Typography>
+                            <Typography style={{fontSize:'41px',fontFamily:'Rubik-Bold'}}>Liburan</Typography>
+                            <Typography style={{fontSize:'20px',fontFamily:'Rubik-Bold'}}>dan bertemu</Typography>
+                            <Typography style={{fontSize:'25px',fontFamily:'Rubik-Bold'}}>teman baru!</Typography>
                         </div>
                     </div>
                     <div className="form-signup">
@@ -300,7 +300,7 @@ class SignUp extends React.Component{
                                         >
                                             {activeStep === steps.length - 1 ? 'Finish' : activeStep === 0 ? 'Daftar' :'Lanjutkan'}
                                         </Button>
-                                        {activeStep == 0 && (<Link to='login'><p className="message"><a href="#">Sudah memiliki akun</a></p> </Link>)}
+                                        {activeStep == 0 && (<Link to='login'><p className="message"><a href="#">Belum memiliki akun</a></p> </Link>)}
                                     </div>
                                 </div>
                             )}

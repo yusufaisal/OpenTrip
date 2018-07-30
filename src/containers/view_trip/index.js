@@ -52,8 +52,7 @@ class ViewTrip extends Component {
         this.state = {
             drawer: false,
             open: true,
-            files: [],
-            data: this.props.trip
+            files: []
         }
     }
 
@@ -63,7 +62,8 @@ class ViewTrip extends Component {
 
     render() {
         const { classes } = this.props;
-        console.log(this.props.trip);
+        let author = this.props.trip;
+        console.log(author);
         return (
             <div className="container-home">
                 <NavBar />
