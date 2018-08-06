@@ -52,18 +52,23 @@ class ViewTrip extends Component {
         this.state = {
             drawer: false,
             open: true,
-            files: []
+            files: [],
+            data: this.props.trip
         }
     }
 
-    componentWillMount(){
+    componentDidMount(){
         this.props.fetchTripDetail();
+        setTimeout(() => {
+            console.log(this.props.trip._author._id)
+
+        },5000)
+        // this.setState()
     }
 
     render() {
         const { classes } = this.props;
-        let author = this.props.trip;
-        console.log(author);
+        // let author = this.props.trip;
         return (
             <div className="container-home">
                 <NavBar />

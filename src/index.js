@@ -68,8 +68,8 @@ ReactDOM.render(
             <BrowserRouter>
                 <div style={styles.container}>
                     <Switch>
-                        <Route exact path="/create_trip" component={CreateTrip} />
                         <Route exact path="/" component={Home} />
+                        <Route exact path="/create_trip" component={CreateTrip} />
                         <Route exact path="/signup" component={Signup} />
                         <Route exact path="/login" component={Login} />
                         <Route exact path="/trip/:id" component={Trip}/>

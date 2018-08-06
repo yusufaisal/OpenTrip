@@ -16,10 +16,13 @@ import TextField from 'material-ui/TextField';
 import Typography from 'material-ui/Typography';
 import {InputAdornment} from 'material-ui/Input/';
 import {Link} from 'react-router-dom'
+import {connect} from "react-redux";
+import {signInAction} from "../../actions";
+import { Field, reduxForm } from 'redux-form';
 
 
 const email_logo = "/images/email.png";
-const password_logo = "/images/email.png";
+const password_logo = "/images/password.png";
 const logo = "/images/logo.png";
 const styles = theme => ({
     root: {
@@ -37,140 +40,124 @@ const styles = theme => ({
     }
 });
 
-const codes =[
-    {
-        value: 'ID',
-        label: '+62',
-    },
-    {
-        value: 'MY',
-        label: '+11',
-    },
-];
-
-function getSteps() {
-    return ['Select campaign settings', 'Create an ad group', 'Create an ad'];
-}
-
 class LoginForm extends React.Component{
-    state = {
-        activeStep: 0,
-        skipped: new Set(),
-        phone_code: 'ID',
-        username: '',
-        email: '',
-        password: '',
+    constructor(props){
+        super(props);
+        this.state = {
+            email: '',
+            password:'' ,
+        };
+    }
+
+    submit (values) {
+        console.log("test");
+        this.props.signInAction(values, this.props.history)
+    }
+
+    onSubmit(e) {
+        e.preventDefault()
+        let { email, password } = this.state;
+        console.log(this.state)
+    }
+
+    renderEmail = () => {
+        return(
+            <TextField
+                id="email"
+                placeholder="Email"
+                // className={classes.textField}
+                margin="normal"
+                InputProps={{
+                    startAdornment: (
+                        <InputAdornment position="start">
+                            <img src={email_logo} style={{width:"80%",height:"auto",marginBottom:"5px"}}/>
+                        </InputAdornment>
+                    ),
+                }}
+                style={{
+                    width:'100%',marginTop:"0"
+                }}
+                onChange={event => this.setState({email: event.target.value})}
+            />
+        )
     };
 
-    handleNext = (e) => {
-        const { activeStep } = this.state;
-        let { skipped } = this.state;
-        if (this.isStepSkipped(activeStep)) {
-            skipped = new Set(skipped.values());
-            skipped.delete(activeStep);
-        }
-        this.setState({
-            activeStep: activeStep + 1,
-            skipped,
-        });
-    };
-    handleBack = () => {
-        const { activeStep } = this.state;
-        this.setState({
-            activeStep: activeStep - 1,
-        });
-    };
-    handleReset = () => {
-        this.setState({
-            activeStep: 0,
-        });
-    };
-    isStepSkipped(step) {
-        return this.state.skipped.  has(step);
+    renderPassword = () => {
+        return(
+            <TextField
+                id="password"
+                placeholder="Password"
+                type='password'
+                margin="normal"
+                // onChange={this.handleChange('password')}
+
+                InputProps={{
+                    startAdornment: (
+                        <InputAdornment position="start" >
+                            <img src={password_logo} style={{width:"80%",height:"auto",marginBottom:"5px"}}/>
+                        </InputAdornment>
+                    )
+                }}
+                style={{width: "100%",marginTop:"6px" }}
+                onChange={event => this.setState({password: event.target.value})}
+            />
+        )
     }
-    handleChange = prop => event => {
-        this.setState({ [prop]: event.target.value });
-    };
 
     render(){
-        const { classes } = this.props;
+        const { handleSubmit } = this.props;
 
         return(
-            <div className="login-page" style={{display:'flex'}}>
-                <div className="main-signup">
-                    <div className="banner-signup" >
+            <div className="login-page">
+                <div className="main-login">
+                    <div className="banner-login" >
                         <div style={{flex:'1'}}>
-                            <img className="logo-signup" src={logo}/>
+                            <img className="logo-login" src={logo}/>
                         </div>
-                        <div style={{flex:'1',paddingBottom:'20px',position:'absolute',bottom:'0'}}>
-                            <Typography style={{fontSize:'41px',fontFamily:'Rubik-Bold'}}>Liburan</Typography>
-                            <Typography style={{fontSize:'20px',fontFamily:'Rubik-Bold'}}>dan bertemu</Typography>
-                            <Typography style={{fontSize:'25px',fontFamily:'Rubik-Bold'}}>teman baru!</Typography>
+                        <div>
+                            <a style={{fontSize:'33px',fontFamily:'Rubik-Bold',margin:0}}>Yuk Liburan!</a><br/>
+                            <a style={{fontSize:'20px',fontFamily:'Rubik-Bold'}}>Teman barumu sudah menanti!</a>
                         </div>
                     </div>
-                    <div className="form-signup">
+                    <div className="form-login">
                         <div style={{display:'flex',justifyContent:'space-between',flexDirection:'column'}}>
-                            <div style={{flex:1}}>
+                            <div>
                                 {/*title*/}
-                                <Typography style={{fontSize:'22px',fontFamily:'Rubik-Bold'}}>Masuk</Typography>
-                                <form className="login-form-signup">
+                                <a className='title-login'>Masuk</a>
+                                <form onSubmit={this.onSubmit.bind(this)} className="login-form">
                                     {/*Content*/}
-                                    <TextField
-                                        id="email"
-                                        placeholder="Email"
-                                        // className={classes.textField}
-                                        margin="normal"
-                                        InputProps={{
-                                            startAdornment: (
-                                                <InputAdornment position="start">
-                                                    <img src={email_logo} style={{width:"80%",height:"auto",marginBottom:"5px"}}/>
-                                                </InputAdornment>
-                                            ),
-                                        }}
-                                        style={{
-                                            width:'100%'
-                                        }}
+                                    <Field
+                                        name="email"
+                                        component={this.renderEmail}
                                     />
-                                    <TextField
-                                        id="password"
-                                        placeholder="Password"
-                                        type='password'
-                                        margin="normal"
-                                        // onChange={this.handleChange('password')}
-
-                                        InputProps={{
-                                            startAdornment: (
-                                                <InputAdornment position="start" >
-                                                    <img src={password_logo} style={{width:"80%",height:"auto",marginBottom:"5px"}}/>
-                                                </InputAdornment>
-                                            )
-                                        }}
-                                        style={{width: "100%",margin:"0" }}
+                                    <Field
+                                        name="password"
+                                        component={this.renderPassword}
                                     />
-
+                                    <div style={{flex:1,display:'flex',paddingBottom:'30px',position:'absolute',bottom:'0',width:'100%'}}>
+                                        <Button
+                                            raised
+                                            type = "submit"
+                                            color="secondary"
+                                            size="small"
+                                            style={{
+                                                outline: "none",
+                                                textTransform: "capitalize",
+                                                fontFamily: "Rubik-Light",
+                                                fontSize: 14,
+                                                borderRadius: 2,
+                                                minWidth:"18%",
+                                                marginRight:"1rem",
+                                                padding:"0.6rem",
+                                            }}
+                                        >
+                                            Masuk
+                                        </Button>
+                                        <Link to='/signup' refresh="true"><p className="message-login"><a href="#">Belum memiliki akun</a></p> </Link>
+                                    </div>
                                 </form>
                             </div>
-                            <div style={{flex:1,display:'flex',paddingBottom:'30px',position:'absolute',bottom:'0',width:'100%'}}>
-                                <Button
-                                    raised
-                                    color="secondary"
-                                    size="small"
-                                    style={{
-                                        outline: "none",
-                                        textTransform: "capitalize",
-                                        fontFamily: "Rubik-Light",
-                                        fontSize: 14,
-                                        borderRadius: 2,
-                                        maxWidth:"15%",
-                                        marginRight:"1rem",
-                                        padding:"0.6rem",
-                                    }}
-                                    onClick={this.handleNext}
-                                >
-                                    Login
-                                </Button>
-                                <Link to='/signup'><p className="message"><a href="#">Sudah memiliki akun</a></p> </Link>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -179,4 +166,27 @@ class LoginForm extends React.Component{
     }
 }
 
-export default withStyles(styles)(LoginForm);
+function validate(values) {
+    const errors = {};
+    const requiredFields = [
+        'email',
+        'password',
+    ]
+    requiredFields.forEach(field => {
+        if (!values[field]) {
+            errors[field] = 'Required'
+        }
+    })
+    if (
+        values.email &&
+        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+    ) {
+        errors.email = 'Invalid email address'
+    }
+    return errors;
+}
+
+export default reduxForm({
+    form: 'LoginForm',
+    validate
+})(connect(null, { signInAction })(withStyles(styles)(LoginForm)));

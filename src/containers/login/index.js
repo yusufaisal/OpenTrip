@@ -5,9 +5,6 @@ import { connect } from 'react-redux';
 import { withStyles } from 'material-ui/styles';
 import { Field, reduxForm } from 'redux-form';
 
-import AccountCircle from 'material-ui-icons/AccountCircle';
-import ExpandMore from 'material-ui-icons/ExpandMore';
-import ExpandLess from 'material-ui-icons/ExpandLess';
 import People from 'material-ui-icons/PeopleOutline';
 import Lock from 'material-ui-icons/LockOutline';
 import Visibility from 'material-ui-icons/Visibility';
@@ -171,18 +168,7 @@ class Login extends Component {
         );
     }
 
-    onSubmit(values) {
-        // this.props.login(values, () => {
-        // this.props.history.push("/create_trip");
-        // console.log(this.props.history);
-        // console.log("MY HISTO", this.props.history);
-
-        // });
-        // console.log("VAL", values);
-
-    }
-
-    submit (values) {        
+    submit (values) {
         this.props.signInAction(values, this.props.history)
     }
 
